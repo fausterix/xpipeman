@@ -85,7 +85,7 @@ extern void     all_popdown(void);
 #define NUM_TMP_CURSOR_PIXMAPS (BAR+5)
 
 
-extern XtEventHandler redisplay_level(Widget w, caddr_t closure, XExposeEvent *event);
+extern XtEventHandler redisplay_level(Widget w, void * closure, XExposeEvent *event);
 
 extern void 	init_pixmaps(Widget top_shell),
                 display_allpixmaps(void),
@@ -113,7 +113,7 @@ extern XtActionProc	do_nothing_action( Widget w, XEvent *event, String *params, 
                         fast_flow_action(Widget w, XEvent *event, String *params, Cardinal *num_params),
                         place_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params);
 
-extern XtEventHandler 	pointer_moved(Widget w, caddr_t closure, XPointerMovedEvent *event);
+extern XtEventHandler 	pointer_moved(Widget w, void * closure, XPointerMovedEvent *event);
 
 
 /*
@@ -123,7 +123,6 @@ extern XtEventHandler 	pointer_moved(Widget w, caddr_t closure, XPointerMovedEve
 #ifndef SCORE_FILE
 #  define SCORE_FILE "/tmp/xpipescores"
 #endif
-#  define SCORE_FILE "/tmp/xpipescores"
 
 #ifndef MAXSCORES
 #  define MAXSCORES 20
@@ -182,7 +181,7 @@ extern void 	new_game(void),
                 reset_block_origin(void),
                 remove_block(void),
                 speed_up_flow(void),
-                draw_flow(caddr_t data, XtIntervalId *id),
+                draw_flow(void * data, XtIntervalId *id),
                 increment_flow(),
                 block_replace(int flw_dir);
 extern int  	can_go(int x, int y),
@@ -192,8 +191,8 @@ extern int      current_block;
 
 extern void     new_score(int n);
 extern void     reset_bonus(void);
-extern void     show_when_flow(caddr_t data, XtIntervalId *id);
-extern void     game_over( caddr_t data, XtIntervalId *id);
+extern void     show_when_flow(void * data, XtIntervalId *id);
+extern void     game_over( void * data, XtIntervalId *id);
 
 
 /*

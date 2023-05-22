@@ -137,8 +137,8 @@ static Arg arglist_continue_button[] = {
 };
 
 /*ARGSUSED*/
-static XtCallbackProc 
-continue_callback( Widget w, caddr_t closure, caddr_t call_data)
+static void
+continue_callback( Widget w, void * closure, void * call_data)
 {
  level_over_popdown();
  start_new_level();

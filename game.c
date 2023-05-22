@@ -327,7 +327,7 @@ initialise_sequence()
 
 /*----------------------------------------------------------------------*/
 void
-level_over(caddr_t data, XtIntervalId *id)
+level_over(void * data, XtIntervalId *id)
 {    /* find any unconnected blocks  -10 for each one! */
   int x,y; 
  for(y=0;y<MAXY;y++)
@@ -353,7 +353,7 @@ level_over(caddr_t data, XtIntervalId *id)
 }
 /*----------------------------------------------------------------------*/
 void
-game_over( caddr_t data, XtIntervalId *id)
+game_over( void * data, XtIntervalId *id)
 {
   game_active =0;
   game_over_popdown();
@@ -464,7 +464,7 @@ speed_up_flow()
 }
 /*----------------------------------------------------------------------*/
 void
-show_when_flow(caddr_t data, XtIntervalId *id)
+show_when_flow(void * data, XtIntervalId *id)
 { int start_flowing=0;
 
   blkstarttime++;
@@ -520,7 +520,7 @@ show_when_flow(caddr_t data, XtIntervalId *id)
     
 /*----------------------------------------------------------------------*/
 void
-draw_flow( caddr_t data, XtIntervalId *id)
+draw_flow( void * data, XtIntervalId *id)
 {
   current_callback = NULL;
   if (blktime < 2)
@@ -543,7 +543,7 @@ void
 increment_flow()
 {
   int new_dir,i,failed=0;
-  caddr_t data;  /*dummy variables*/
+  void * data;  /*dummy variables*/
   XtIntervalId *id;
       switch (flow_dir) {
       case FLEFT: { 

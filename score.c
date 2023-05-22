@@ -195,8 +195,8 @@ static Arg arglist_popdown[] = {
 
 
 /*ARGSUSED*/
-static XtCallbackProc 
-popdown_callback( Widget w, caddr_t closure, caddr_t call_data)
+static void
+popdown_callback( Widget w, void * closure, void * call_data)
 {
   XtPopdown(score_popup);
 }

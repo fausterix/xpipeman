@@ -156,7 +156,7 @@ place_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_param
 
 /*ARGSUSED*/
 XtEventHandler
-pointer_moved( Widget w, caddr_t closure, XPointerMovedEvent *event)
+pointer_moved( Widget w, void * closure, XPointerMovedEvent *event)
 {
   if(game_active) ;
 

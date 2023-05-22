@@ -51,8 +51,8 @@
 Widget info_popup;
 
 /*ARGSUSED*/
-static XtCallbackProc 
-info_popdown_callback( Widget w,caddr_t closure,caddr_t call_data)
+static void
+info_popdown_callback( Widget w,void * closure,void * call_data)
 {
   XtPopdown(info_popup);
 }
