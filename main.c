@@ -138,7 +138,7 @@ static XtActionsRec actions[] = {
   {"do_nothing",(XtActionProc)do_nothing_action},
 };
 
-Pixel fg, bg;
+AppData app_data;
 
 XtTranslations translations;
 
@@ -148,20 +148,18 @@ static XrmOptionDescRec options[] = {
 
 static XtResource application_resources[] = {
   {"foreground", "Foreground", XtRPixel, sizeof(Pixel),
-                (Cardinal)&fg, XtRString, (caddr_t) "Black"},
+                XtOffsetOf(AppData, fg), XtRString, (caddr_t) "Black"},
   {"background", "Background", XtRPixel, sizeof(Pixel),
-                (Cardinal)&bg, XtRString, (caddr_t) "White"},
+                XtOffsetOf(AppData, bg), XtRString, (caddr_t) "White"},
   {"translations","Translations", XtRTranslationTable, sizeof(XtTranslations),
-                (Cardinal)&translations, XtRString, (caddr_t)translations_str},
+                XtOffsetOf(AppData,translations_str), XtRString, (caddr_t)translations_str},
   {"scorefile","Scorefile", XtRString, sizeof(String),
-                (Cardinal)&score_filename, XtRString, (caddr_t)SCORE_FILE},
+                XtOffsetOf(AppData,score_file), XtRString, (caddr_t)SCORE_FILE},
 };
 
 /*----------------------------------------------------------------------*/
 
-main(argc, argv)
-  unsigned int argc;
-  char **argv;
+main(int argc, char **argv)
 {
   Arg args[1];
   XGCValues gcv;
@@ -177,8 +175,12 @@ main(argc, argv)
 
   XtAddActions(actions,XtNumber(actions));
 
-  XtGetApplicationResources(top_shell, 0, application_resources, 
-			XtNumber(application_resources), NULL, 0 );
+    XtGetApplicationResources(top_shell, 
+            &app_data, 
+            application_resources, 
+            XtNumber(application_resources), 
+            NULL, 
+            0);
 
   top_widget = XtCreateManagedWidget(
                                     "top_widget",
@@ -263,12 +265,12 @@ main(argc, argv)
 
   display   = XtDisplay(playfield_widget);
   playfield = XtWindow(playfield_widget);
-  gcv.foreground = fg;
-  gcv.background = bg;
+  gcv.foreground = app_data.fg;
+  gcv.background = app_data.bg;
   gcv.function = GXcopy;
   gc = XCreateGC(display, playfield, 
  		GCForeground | GCBackground | GCFunction, &gcv);
-  gcv.foreground = bg;
+  gcv.foreground = app_data.bg;
   cleargc = XCreateGC(display, playfield,
  		 GCForeground | GCBackground | GCFunction, &gcv);
 
@@ -295,8 +297,7 @@ quit_game()
 
 
 void
-update_score(score)
-  int score;
+update_score( int score)
 {
   char text[13];
   (void)sprintf(text,"Score: %4d",score);
@@ -305,8 +306,7 @@ update_score(score)
 }
 
 void
-update_bonus(score)
-  int score;
+update_bonus( int score)
 {
   char text[13];
   (void)sprintf(text,"Bonus: %4d",score);
@@ -315,18 +315,16 @@ update_bonus(score)
 }
 
 void
-update_remain(score)
-  int score;
+update_remain(int score)
 {
-  char text[13];
+  char text[23];
   (void)sprintf(text,"Remaining: %4d",score);
   XtSetArg(arglistremain_command[0],XtNlabel,text);
   XtSetValues(remain_command,arglistremain_command,1);
 }
 
 void
-update_level(level)
-  int level;
+update_level(int level)
 {
   char text[13];
   (void)sprintf(text,"Level: %4d",level);

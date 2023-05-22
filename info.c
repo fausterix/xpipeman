@@ -52,10 +52,7 @@ Widget info_popup;
 
 /*ARGSUSED*/
 static XtCallbackProc 
-info_popdown_callback(w, closure, call_data)
-  Widget w;
-  caddr_t closure;
-  caddr_t call_data;
+info_popdown_callback( Widget w,caddr_t closure,caddr_t call_data)
 {
   XtPopdown(info_popup);
 }
@@ -150,8 +147,7 @@ static Arg arglist_info_popdown[] = {
 
 
 void
-create_info_popup(parent)
-  Widget parent;
+create_info_popup(Widget parent)
 {
   int i;
   Widget info_msg, info_popdown,info_box;

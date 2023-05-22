@@ -3,13 +3,14 @@
 #
         TASK		= xpipeman
         SCORE_FILE	= -DSCORE_FILE=\"./xpipescores\"
+        cc              = gcc
 
 #
 # EDIT THIS or use the imakefile.
 #
-        INCDIR		= /home/X11
-        LIBDIR		= /home/X11/lib
-        LIBS		= -lXaw -lXt -lXmu -lX11 -lm
+        #INCDIR		= /home/X11
+        #LIBDIR		= /home/X11/lib
+        LIBS		= -lXaw -lXmu -lXt -lSM -lICE -lXext -lX11 -lm 
 
 #
 # if you plan on installing it...
@@ -24,8 +25,10 @@
         DEFINES		= $(SCORE_FILE) $(MAXSCORES) 
 
         DBXFLAGS	= 
-        CFLAGS		= -O $(DBXFLAGS) -I$(INCDIR) $(DEFINES)
-        LDFLAGS		= $(DBXFLAGS) -L$(LIBDIR) $(LIBS)
+        #CFLAGS		= -O $(DBXFLAGS) -I$(INCDIR) $(DEFINES)
+        CFLAGS		= -g -O $(DBXFLAGS) $(DEFINES)
+        #LDFLAGS		= $(DBXFLAGS) -L$(LIBDIR) $(LIBS)
+        LDFLAGS		= -g $(DBXFLAGS) $(LIBS)
 
         CFILES		= main.c game.c actions.c graphics.c score.c info.c popup.c
         OBJECTS		= main.o game.o actions.o graphics.o score.o info.o popup.o
@@ -34,10 +37,10 @@
 default: $(TASK) 
  
 $(TASK): $(OBJECTS) $(INCLUDES) 
-	cc -o $@ $(OBJECTS) $(LDFLAGS) 
+	$(CC) -g -o $@ $(OBJECTS) $(LDFLAGS) 
 
 .c.o:
-	cc -c $*.c $(CFLAGS) 
+	$(CC) -g -c $*.c $(CFLAGS) 
 
 tags: $(CFILES) $(INCLUDES)
 	ctags -t $(INCLUDES) $(CFILES)
@@ -49,6 +52,6 @@ man::
 	nroff -man xrobots.nr
 
 clean::
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) core core.* xpipeman
 
 

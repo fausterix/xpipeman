@@ -44,11 +44,7 @@
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
 XtActionProc
-do_nothing_action(w,event,params,num_params)
-  Widget w;
-  XEvent *event;
-  String *params;
-  Cardinal *num_params;
+do_nothing_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 {
   /* do nothing */
 }
@@ -56,11 +52,7 @@ do_nothing_action(w,event,params,num_params)
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
 XtActionProc
-move_here_action(w,event,params,num_params)
-  Widget w;
-  XButtonEvent *event;
-  String *params;
-  Cardinal *num_params;
+move_here_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params)
 {
   /* called to move a block to a specific place - does NOT place it */
   int tmp_block_x, tmp_block_y;
@@ -89,11 +81,7 @@ move_here_action(w,event,params,num_params)
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
 XtActionProc
-display_pixmap_action(w,event,params,num_params)
-  Widget w;
-  XEvent *event;
-  String *params;
-  Cardinal *num_params;
+display_pixmap_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 {
   if (!(game_active))
      display_allpixmaps();
@@ -101,11 +89,7 @@ display_pixmap_action(w,event,params,num_params)
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
 XtActionProc
-fast_flow_action(w,event,params,num_params)
-  Widget w;
-  XEvent *event;
-  String *params;
-  Cardinal *num_params;
+fast_flow_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 {
   if((!game_active) || buttons_disabled) return;
    speed_up_flow(); 
@@ -115,11 +99,7 @@ fast_flow_action(w,event,params,num_params)
 
 /*ARGSUSED*/
 XtActionProc
-move_action(w,event,params,num_params)
-  Widget w;
-  XButtonEvent *event;
-  String *params;
-  Cardinal *num_params;
+move_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params)
 {
 /* 
  *  Called to move the block with the keyboard keys.
@@ -162,11 +142,7 @@ move_action(w,event,params,num_params)
 
 /*ARGSUSED*/
 XtActionProc
-place_action(w,event,params,num_params)
-  Widget w;
-  XButtonEvent *event;
-  String *params;
-  Cardinal *num_params;
+place_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params)
 {
 /* 
  Places a block 
@@ -180,10 +156,7 @@ place_action(w,event,params,num_params)
 
 /*ARGSUSED*/
 XtEventHandler
-pointer_moved(w, closure, event)
-  Widget w;
-  caddr_t closure;
-  XPointerMovedEvent *event;
+pointer_moved( Widget w, caddr_t closure, XPointerMovedEvent *event)
 {
   if(game_active) ;
 

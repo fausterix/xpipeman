@@ -34,18 +34,32 @@
 /* 
  * from main.c
  */
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 extern Display 	*display;
 extern Window 	playfield;
 extern Widget 	playfield_widget;
 extern GC 	gc,
 		cleargc;
-extern Pixel 	fg, 
-		bg;
 
-extern void 	update_score();
-extern void 	update_level();
-extern void 	update_bonus();
-extern void 	update_remain();
+typedef struct {
+    Pixel fg;
+    Pixel bg;
+    XtTranslations translations_str;
+    String score_file;
+} AppData;
+
+extern AppData app_data;
+
+extern void 	update_score(int score);
+extern void 	update_level(int level);
+extern void 	update_bonus(int score);
+extern void 	update_remain(int score);
+extern void     all_popdown(void);
 
 /*
  * from graphics.c
@@ -71,15 +85,16 @@ extern void 	update_remain();
 #define NUM_TMP_CURSOR_PIXMAPS (BAR+5)
 
 
-extern XtEventHandler redisplay_level();
+extern XtEventHandler redisplay_level(Widget w, caddr_t closure, XExposeEvent *event);
 
-extern void 	init_pixmaps(), 
-                display_allpixmaps(),
-		display_level(), 
-		free_pixmaps(), 
-		show_movement(),
-                redraw_block(),
-                redisplay_sequence();
+extern void 	init_pixmaps(Widget top_shell),
+                display_allpixmaps(void),
+		display_level(void),
+		free_pixmaps(void),
+		show_movement(void),
+                redraw_block(int x, int y),
+                start_new_level(),
+                redisplay_sequence(void);
 
 
 #define CELLSIZE 40
@@ -92,13 +107,13 @@ extern void 	init_pixmaps(),
  */
 
 
-extern XtActionProc	do_nothing_action(),
-			move_action(),
-                        move_here_action(),
-                        fast_flow_action(),
-                        place_action();
+extern XtActionProc	do_nothing_action( Widget w, XEvent *event, String *params, Cardinal *num_params),
+			move_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params),
+                        move_here_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params),
+                        fast_flow_action(Widget w, XEvent *event, String *params, Cardinal *num_params),
+                        place_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params);
 
-extern XtEventHandler 	pointer_moved();
+extern XtEventHandler 	pointer_moved(Widget w, caddr_t closure, XPointerMovedEvent *event);
 
 
 /*
@@ -106,18 +121,19 @@ extern XtEventHandler 	pointer_moved();
  */
 
 #ifndef SCORE_FILE
-#  define SCORE_FILE "/usr/games/lib/xpipescores"
+#  define SCORE_FILE "/tmp/xpipescores"
 #endif
+#  define SCORE_FILE "/tmp/xpipescores"
 
 #ifndef MAXSCORES
 #  define MAXSCORES 20
 #endif
 
-extern void 	check_score(), 
-		create_high_score_popup();
+extern void create_high_score_popup(Widget parent);
+extern void check_score(int current_score, int level);
 
-extern void	show_scores_callback();
-
+extern void show_scores_callback(void);
+extern void show_scores();
 extern char *score_filename;
 
 /*
@@ -159,33 +175,41 @@ extern int 	score,
 #define INXRANGE( _x_ )  (((_x_) >=0) && ((_x_)<(MAXX-3)))
 #define INYRANGE( _y_ )  (((_y_) >=0) && ((_y_)<MAXY))
 
-extern void 	new_game(), 
-		add_score(), 
-		new_level(),
-                increment_sequence(),
-                reset_block_origin(),
-                remove_block(),
-                speed_up_flow(),
-                draw_flow(),
+extern void 	new_game(void),
+		//add_score(void),
+		new_level(void),
+                increment_sequence(void),
+                reset_block_origin(void),
+                remove_block(void),
+                speed_up_flow(void),
+                draw_flow(caddr_t data, XtIntervalId *id),
                 increment_flow(),
-                block_replace();
-extern int  	can_go(),
-                can_place(),
-                place_block();
+                block_replace(int flw_dir);
+extern int  	can_go(int x, int y),
+                can_place(int x, int y),
+                place_block(void);
 extern int      current_block;
+
+extern void     new_score(int n);
+extern void     reset_bonus(void);
+extern void     show_when_flow(caddr_t data, XtIntervalId *id);
+extern void     game_over( caddr_t data, XtIntervalId *id);
+
 
 /*
    From info.c
 */
-extern void  show_info(),
-             create_info_popup();
+extern void  show_info(void);
+void create_info_popup(Widget parent);
 
 /*
    From popup.c
 */
 
-extern void  show_level_over_popup(),
-             show_game_over_popup(),
-	     level_over_popdown(),
-	     game_over_popdown(),
-	     create_general_popups();
+extern void  show_level_over_popup(void),
+             show_game_over_popup(void),
+	     level_over_popdown(void),
+	     game_over_popdown(void),
+	     create_general_popups(Widget parent),
+             show_nomore_popup(void),
+             nomore_popdown(void);

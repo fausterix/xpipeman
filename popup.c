@@ -138,18 +138,14 @@ static Arg arglist_continue_button[] = {
 
 /*ARGSUSED*/
 static XtCallbackProc 
-continue_callback(w, closure, call_data)
-  Widget w;
-  caddr_t closure;
-  caddr_t call_data;
+continue_callback( Widget w, caddr_t closure, caddr_t call_data)
 {
  level_over_popdown();
  start_new_level();
 }
 
 void
-create_general_popups(parent)
-  Widget parent;
+create_general_popups(Widget parent)
 {
   int i;
   Widget info_msg, game_over_box,level_over_box,continue_button,nomore_box;

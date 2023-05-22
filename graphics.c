@@ -50,8 +50,7 @@ static Pixmap tmp_pixmap[NUM_TMP_CURSOR_PIXMAPS];
 /*----------------------------------------------------------------------*/
 
 void
-init_pixmaps(top_shell)
-  Widget top_shell;
+init_pixmaps( Widget top_shell)
 {
 /*
  * Let's make some pixmaps and some cursors.
@@ -63,8 +62,8 @@ init_pixmaps(top_shell)
 
 /*- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -*/
 
-  fgcolor.pixel = fg;
-  bgcolor.pixel = bg;
+  fgcolor.pixel = app_data.fg;
+  bgcolor.pixel = app_data.bg;
   fgcolor.flags =  DoRed | DoGreen | DoBlue;
   bgcolor.flags =  DoRed | DoGreen | DoBlue;
   XQueryColor(display,DefaultColormapOfScreen(XtScreen(playfield_widget)), &fgcolor);
@@ -395,7 +394,7 @@ redisplay_sequence()
 /*----------------------------------------------------------------------*/
 
 void
-redraw_block(x,y)
+redraw_block(int x, int y)
 {
 /*redraws a single block*/
   XCopyPlane(display,tmp_pixmap[pipe_board[x][y]],playfield,gc,0,0,
@@ -428,10 +427,7 @@ show_movement()
 
 /*ARGSUSED*/
 XtEventHandler
-redisplay_level(w, closure, event)
-  Widget w;
-  caddr_t closure;
-  XExposeEvent *event;
+redisplay_level(Widget w, caddr_t closure, XExposeEvent *event)
 {
 /* refresh entire screen -- e.g. expose events.  Just a little naive. */
   display_level();

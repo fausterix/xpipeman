@@ -64,10 +64,9 @@ typedef struct {
 
 static SCORE scores[MAXSCORES];
 
-void 	show_scores(), 
-	new_high_score(), 
-	load_scores(), 
-	write_out_scores();
+static void load_scores(void);
+static void new_high_score(int current_score, int level);
+static void write_out_scores(void);
 
 static FILE *scorefile = 0;
 char *score_filename;
@@ -75,8 +74,7 @@ char *score_filename;
 /*----------------------------------------------------------------------*/
 
 void
-check_score(current_score,level)
-  int current_score,level;
+check_score(int current_score, int level)
 {
 
   load_scores();
@@ -87,7 +85,7 @@ check_score(current_score,level)
   }
   if(scorefile) {
 #ifndef SYSV
-    flock(scorefile->_file, LOCK_UN);
+    //flock(scorefile->_file, LOCK_UN);
 #endif
     fclose(scorefile);
     show_scores();
@@ -105,7 +103,7 @@ load_scores()
     return;
   }
 #ifndef SYSV
-  flock(scorefile->_file, LOCK_EX);
+  //flock(scorefile->_file, LOCK_EX);
 #endif
   while( fgets(scores[i].score,6,scorefile) 	/* get score */
       && fgets(scores[i].name,26,scorefile) 	/* get name */
@@ -119,8 +117,7 @@ load_scores()
 
 
 static void
-new_high_score(current_score,level)
-  int current_score,level;
+new_high_score(int current_score, int level)
 {
   int i;
   char textscore[6],
@@ -199,18 +196,15 @@ static Arg arglist_popdown[] = {
 
 /*ARGSUSED*/
 static XtCallbackProc 
-popdown_callback(w, closure, call_data)
-  Widget w;
-  caddr_t closure;
-  caddr_t call_data;
+popdown_callback( Widget w, caddr_t closure, caddr_t call_data)
 {
   XtPopdown(score_popup);
 }
 
 
 void
-create_high_score_popup(parent)
-  Widget parent;
+create_high_score_popup(
+  Widget parent)
 {
   int i;
   Widget score_box, popdown;
@@ -257,7 +251,7 @@ void
 show_scores()
 {
   int i;
-  char tmp_str[38];
+  char tmp_str[1038];
   Arg tmp_arg;
 
   for(i = 0;i<MAXSCORES;i++) {
@@ -281,7 +275,7 @@ show_scores_callback()
 
   if(scorefile) {
 #ifndef SYSV
-    flock(scorefile->_file, LOCK_UN);
+    //flock(scorefile->_file, LOCK_UN);
 #endif
     fclose(scorefile);
     show_scores();

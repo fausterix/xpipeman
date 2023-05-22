@@ -154,23 +154,21 @@ static int onewaytime=14;  /*start oneway blocks on level 14*/
 static int oneway=1;   /* number of 1 way blocks in the sequence at present*/
 #define MAXONEWAYS 2   /* maximum one ways in the sequence at any one time*/
 
-void start_new_level();
+/* void start_new_level();
 void level_over();
 void game_over();
 void reset_score();
-void show_when_flow();
+void show_when_flow(); */
 /*----------------------------------------------------------------------*/
 void
-new_score(n)
-  int n;
+new_score(int n)
 {
   score += n;
   update_score(score);
 }
 /*----------------------------------------------------------------------*/
 void
-new_bonus(n)
-  int n;
+new_bonus(int n)
 {
   bonus += n;
   update_bonus(bonus);
@@ -251,8 +249,7 @@ remove_block()
 /*----------------------------------------------------------------------*/
 
 void
-place_objects(levelnum)
-int levelnum;
+place_objects(int levelnum)
 { int i;
   for (i=0 ; i <MAXY; i++)
     { if (obmaps[levelnum][i] !=0 )
@@ -330,9 +327,7 @@ initialise_sequence()
 
 /*----------------------------------------------------------------------*/
 void
-level_over(data,id)
-caddr_t data;
-XtIntervalId *id;
+level_over(caddr_t data, XtIntervalId *id)
 {    /* find any unconnected blocks  -10 for each one! */
   int x,y; 
  for(y=0;y<MAXY;y++)
@@ -358,9 +353,7 @@ XtIntervalId *id;
 }
 /*----------------------------------------------------------------------*/
 void
-game_over(data,id)
-caddr_t data;
-XtIntervalId *id;
+game_over( caddr_t data, XtIntervalId *id)
 {
   game_active =0;
   game_over_popdown();
@@ -471,9 +464,7 @@ speed_up_flow()
 }
 /*----------------------------------------------------------------------*/
 void
-show_when_flow(data,id)
-caddr_t data;
-XtIntervalId *id;
+show_when_flow(caddr_t data, XtIntervalId *id)
 { int start_flowing=0;
 
   blkstarttime++;
@@ -529,9 +520,7 @@ XtIntervalId *id;
     
 /*----------------------------------------------------------------------*/
 void
-draw_flow(data,id)
-caddr_t data;
-XtIntervalId *id;
+draw_flow( caddr_t data, XtIntervalId *id)
 {
   current_callback = NULL;
   if (blktime < 2)
@@ -552,7 +541,6 @@ XtIntervalId *id;
 /*----------------------------------------------------------------------*/
 void
 increment_flow()
-
 {
   int new_dir,i,failed=0;
   caddr_t data;  /*dummy variables*/
@@ -599,9 +587,7 @@ increment_flow()
 }    
 
 void
-block_replace(flw_dir)
-int flw_dir;
-
+block_replace(int flw_dir)
 {
    int curr_block,first,setalready=0,blk_score=0,blk_bonus=0;
    curr_block = pipe_board[flow_x][flow_y];
@@ -719,8 +705,7 @@ int flw_dir;
 }  
 /*----------------------------------------------------------------------*/
 int
-can_go(x,y)
-  int x,y;
+can_go( int x, int y)
 {
 
   if( INYRANGE(y) ) 
@@ -735,8 +720,7 @@ can_go(x,y)
 }
 /*----------------------------------------------------------------------*/
 int
-can_place(x,y)
-  int x,y;
+can_place(int x, int y)
 {
 
   if( INYRANGE(y) ) 
