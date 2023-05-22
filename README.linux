@@ -1,0 +1,6 @@
+Linux is still SYSV with regard to file locking.
+
+build:
+   gcc -s -o xpipeman xpipeman.a -lXaw -lXmu -lXt -lXext -lX11
+
+Rob Hooft (hooft@hutruu54.bitnet, hooft@chem.ruu.nl)
