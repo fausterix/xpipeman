@@ -1,0 +1,7 @@
+Ubuntu 22.04
+
+sudo apt install libxaw7
+sudo apt install libxaw7-dev
+
+Using the hand
+make -f Makefile.tra clean && make -f Makefile.tra
