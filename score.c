@@ -57,9 +57,9 @@
 /*----------------------------------------------------------------------*/
 
 typedef struct {
-  char 	score[6], 
-	name[26],
-        level[5];
+  char 	score[32], 
+	      name[32],
+        level[32];
 } SCORE;
 
 static SCORE scores[MAXSCORES];
@@ -120,13 +120,13 @@ static void
 new_high_score(int current_score, int level)
 {
   int i;
-  char textscore[6],
-       name[26],
-       levelno[5];
+  char textscore[32],
+       name[32],
+       levelno[16];
 
-  sprintf(textscore,"%5d",current_score);
-  sprintf(levelno,"%4d",level);
-  strncpy(name,getenv("USER"),25);
+  snprintf(textscore,sizeof(textscore),"%5d",current_score);
+  snprintf(levelno,sizeof(levelno),"%4d",level);
+  strncpy(name,getenv("USER"),sizeof(name)-1);
 
   for(i=MAXSCORES-2;i>=0;i--)
     if( current_score < atoi(scores[i].score) ) {
@@ -251,11 +251,11 @@ void
 show_scores()
 {
   int i;
-  char tmp_str[1038];
+  char tmp_str[2048];
   Arg tmp_arg;
 
   for(i = 0;i<MAXSCORES;i++) {
-    sprintf(tmp_str,"%5s  %25s  %4s", 
+    snprintf(tmp_str,sizeof(tmp_str),"%5s  %25s  %4s", 
 	    scores[i].score, scores[i].name,scores[i].level);
     XtSetArg(tmp_arg,XtNlabel,tmp_str);
     XtSetValues(score_labels[i],&tmp_arg,1);

@@ -85,7 +85,7 @@ extern void     all_popdown(void);
 #define NUM_TMP_CURSOR_PIXMAPS (BAR+5)
 
 
-extern XtEventHandler redisplay_level(Widget w, void * closure, XExposeEvent *event);
+extern void redisplay_level(Widget w, XtPointer closure, XEvent *event, Boolean *cont);
 
 extern void 	init_pixmaps(Widget top_shell),
                 display_allpixmaps(void),
@@ -107,13 +107,12 @@ extern void 	init_pixmaps(Widget top_shell),
  */
 
 
-extern XtActionProc	do_nothing_action( Widget w, XEvent *event, String *params, Cardinal *num_params),
-			move_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params),
-                        move_here_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params),
-                        fast_flow_action(Widget w, XEvent *event, String *params, Cardinal *num_params),
-                        place_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params);
-
-extern XtEventHandler 	pointer_moved(Widget w, void * closure, XPointerMovedEvent *event);
+extern void     do_nothing_action( Widget w, XEvent *event, String *params, Cardinal *num_params);
+extern void     move_here_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params);
+extern void     fast_flow_action(Widget w, XEvent *event, String *params, Cardinal *num_params);
+extern void     place_action(Widget w, XButtonEvent *event, String *params, Cardinal *num_params);
+extern void     move_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params);
+extern void     pointer_moved(Widget w, XtPointer closure, XEvent *event, Boolean *cont);
 
 
 /*

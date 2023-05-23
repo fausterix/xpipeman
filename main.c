@@ -159,6 +159,7 @@ static XtResource application_resources[] = {
 
 /*----------------------------------------------------------------------*/
 
+int
 main(int argc, char **argv)
 {
   Arg args[1];
@@ -168,7 +169,7 @@ main(int argc, char **argv)
 
   srandom(getpid());
   current_block = 0;
-  current_callback = NULL;
+  current_callback = 0;
 
   top_shell = XtInitialize(argv[0], "xpipeman", options, XtNumber(options), &argc, argv);
   XtSetValues(top_shell, arglisttop_shell, XtNumber(arglisttop_shell));
@@ -281,6 +282,7 @@ main(int argc, char **argv)
 
   XtMainLoop();
 
+  return 0;
 }
 
 
@@ -299,8 +301,8 @@ quit_game()
 void
 update_score( int score)
 {
-  char text[13];
-  (void)sprintf(text,"Score: %4d",score);
+  char text[256];
+  (void)snprintf(text, sizeof(text), "Score: %4d",score);
   XtSetArg(arglistscore_command[0],XtNlabel,text);
   XtSetValues(score_command,arglistscore_command,1);
 }
@@ -308,8 +310,8 @@ update_score( int score)
 void
 update_bonus( int score)
 {
-  char text[13];
-  (void)sprintf(text,"Bonus: %4d",score);
+  char text[256];
+  (void)snprintf(text,sizeof(text),"Bonus: %4d",score);
   XtSetArg(arglistbonus_command[0],XtNlabel,text);
   XtSetValues(bonus_command,arglistbonus_command,1);
 }
@@ -317,8 +319,8 @@ update_bonus( int score)
 void
 update_remain(int score)
 {
-  char text[23];
-  (void)sprintf(text,"Remaining: %4d",score);
+  char text[256];
+  (void)snprintf(text,sizeof(text), "Remaining: %4d",score);
   XtSetArg(arglistremain_command[0],XtNlabel,text);
   XtSetValues(remain_command,arglistremain_command,1);
 }
@@ -326,8 +328,8 @@ update_remain(int score)
 void
 update_level(int level)
 {
-  char text[13];
-  (void)sprintf(text,"Level: %4d",level);
+  char text[256];
+  (void)snprintf(text,sizeof(text),"Level: %4d",level);
   XtSetArg(arglistlevel_command[0],XtNlabel,text);
   XtSetValues(level_command,arglistlevel_command,1);
 }

@@ -435,8 +435,10 @@ new_level()
       blkrstart=0;
       blkfull = STARTFULL;
 
-      if (current_callback != NULL)
-	XtRemoveTimeOut(current_callback);
+      if (current_callback)
+      {
+	      XtRemoveTimeOut(current_callback);
+      }
       current_callback = XtAddTimeOut(flow_time_start,show_when_flow,NULL);
       
       reset_block_origin();
@@ -451,8 +453,9 @@ new_level()
 void
 speed_up_flow()
 { int i;
- if (current_callback != NULL)
+ if (current_callback) {
    XtRemoveTimeOut(current_callback);
+ }
  flow_time = FASTFLOW;
  current_callback= XtAddTimeOut(flow_time,draw_flow,NULL);
  for (i=2 ; i <5 ; i++)
@@ -506,14 +509,16 @@ show_when_flow(void * data, XtIntervalId *id)
     }
    if (start_flowing)
      {
-      if (current_callback != NULL)
-	XtRemoveTimeOut(current_callback);
+      if (current_callback) {
+	      XtRemoveTimeOut(current_callback);
+      }
       current_callback = XtAddTimeOut(flow_time_start,draw_flow,NULL);
     }
   else
     {
-      if (current_callback != NULL)
-	XtRemoveTimeOut(current_callback);
+      if (current_callback) {
+	      XtRemoveTimeOut(current_callback);
+      }
       current_callback = XtAddTimeOut(flow_time_start,show_when_flow,NULL);
     }
 }
@@ -522,7 +527,7 @@ show_when_flow(void * data, XtIntervalId *id)
 void
 draw_flow( void * data, XtIntervalId *id)
 {
-  current_callback = NULL;
+  current_callback = 0;
   if (blktime < 2)
     {
       pipe_board[flow_x][flow_y] = blkrstart++;
@@ -572,8 +577,9 @@ increment_flow()
 
       if (failed) {
 	buttons_disabled = 1;
-	if (current_callback != NULL)
+	if (current_callback) {
 	  XtRemoveTimeOut(current_callback);
+  }
 	current_callback = XtAddTimeOut(3000,level_over,NULL);
       }
       else

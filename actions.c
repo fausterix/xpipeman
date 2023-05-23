@@ -43,7 +43,7 @@
 
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
-XtActionProc
+void
 do_nothing_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 {
   /* do nothing */
@@ -51,7 +51,7 @@ do_nothing_action( Widget w, XEvent *event, String *params, Cardinal *num_params
 
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
-XtActionProc
+void
 move_here_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params)
 {
   /* called to move a block to a specific place - does NOT place it */
@@ -88,7 +88,7 @@ display_pixmap_action( Widget w, XEvent *event, String *params, Cardinal *num_pa
 }
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
-XtActionProc
+void
 fast_flow_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 {
   if((!game_active) || buttons_disabled) return;
@@ -98,7 +98,7 @@ fast_flow_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 /*----------------------------------------------------------------------*/
 
 /*ARGSUSED*/
-XtActionProc
+void
 move_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params)
 {
 /* 
@@ -141,7 +141,7 @@ move_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params
 
 
 /*ARGSUSED*/
-XtActionProc
+void
 place_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_params)
 {
 /* 
@@ -155,8 +155,8 @@ place_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_param
 
 
 /*ARGSUSED*/
-XtEventHandler
-pointer_moved( Widget w, void * closure, XPointerMovedEvent *event)
+void
+pointer_moved( Widget w, XtPointer closure, XEvent *event, Boolean *cont)
 {
   if(game_active) ;
 

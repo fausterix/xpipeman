@@ -426,8 +426,8 @@ show_movement()
 /*----------------------------------------------------------------------*/
 
 /*ARGSUSED*/
-XtEventHandler
-redisplay_level(Widget w, void * closure, XExposeEvent *event)
+void
+redisplay_level(Widget w, XtPointer closure, XEvent *event, Boolean *cont)
 {
 /* refresh entire screen -- e.g. expose events.  Just a little naive. */
   display_level();
