@@ -87,14 +87,14 @@ extern void     all_popdown(void);
 
 extern void redisplay_level(Widget w, XtPointer closure, XEvent *event, Boolean *cont);
 
-extern void 	init_pixmaps(Widget top_shell),
-                display_allpixmaps(void),
-		display_level(void),
-		free_pixmaps(void),
-		show_movement(void),
-                redraw_block(int x, int y),
-                start_new_level(),
-                redisplay_sequence(void);
+extern void init_pixmaps(Widget top_shell),
+            display_allpixmaps(void),
+            display_level(void),
+            free_pixmaps(void),
+            show_movement(void),
+            redraw_block(int x, int y),
+            start_new_level(void),
+            redisplay_sequence(void);
 
 
 #define CELLSIZE 40

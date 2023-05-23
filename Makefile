@@ -26,7 +26,7 @@
 
         DBXFLAGS	= 
         #CFLAGS		= -O $(DBXFLAGS) -I$(INCDIR) $(DEFINES)
-        CFLAGS		= -g -O $(DBXFLAGS) $(DEFINES)
+        CFLAGS		= -g -O $(DBXFLAGS) $(DEFINES) # -Wall
         #LDFLAGS		= $(DBXFLAGS) -L$(LIBDIR) $(LIBS)
         LDFLAGS		= -g $(DBXFLAGS) $(LIBS)
 

@@ -80,7 +80,7 @@ move_here_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_p
 
 /*----------------------------------------------------------------------*/
 /*ARGSUSED*/
-XtActionProc
+void
 display_pixmap_action( Widget w, XEvent *event, String *params, Cardinal *num_params)
 {
   if (!(game_active))

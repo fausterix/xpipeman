@@ -154,11 +154,6 @@ static int onewaytime=14;  /*start oneway blocks on level 14*/
 static int oneway=1;   /* number of 1 way blocks in the sequence at present*/
 #define MAXONEWAYS 2   /* maximum one ways in the sequence at any one time*/
 
-/* void start_new_level();
-void level_over();
-void game_over();
-void reset_score();
-void show_when_flow(); */
 /*----------------------------------------------------------------------*/
 void
 new_score(int n)
@@ -548,8 +543,8 @@ void
 increment_flow()
 {
   int new_dir,i,failed=0;
-  void * data;  /*dummy variables*/
-  XtIntervalId *id;
+  void *data = NULL;  /*dummy variables*/
+  XtIntervalId *id = NULL;
       switch (flow_dir) {
       case FLEFT: { 
 	flow_x--;
@@ -598,6 +593,7 @@ block_replace(int flw_dir)
    int curr_block,first,setalready=0,blk_score=0,blk_bonus=0;
    curr_block = pipe_board[flow_x][flow_y];
    blk_score=10;  /* 10 points for connectin a pipe */
+   first=0;
    switch (curr_block) {
    case 1:{
      if (flw_dir == FLEFT)
@@ -674,20 +670,26 @@ block_replace(int flw_dir)
      break;
    }
    case HFULL:{
-     if (flw_dir == FUP)
-	 blkrstart = FILLBLKSTART + (8-1)*5 +5;
-     else 
+     if (flw_dir == FUP) {
+	    blkrstart = FILLBLKSTART + (8-1)*5 +5;
+     }
+     else
+     {
        blkrstart = FILLBLKSTART + (8-1)*5 +3+5;
        blkfull = FILLBLKSTART + (8-1)*5 +2+5;
+     }
      setalready = 1;
      blk_bonus = 40;  /*40 points for creating a loop */
      break;
    }
    case VFULL:{
-     if (flw_dir == FLEFT)
-	 blkrstart = FILLBLKSTART + (9-1)*5 +5;
-     else 
+     if (flw_dir == FLEFT) {
+	      blkrstart = FILLBLKSTART + (9-1)*5 +5;
+     }
+     else
+     { 
        blkrstart = FILLBLKSTART + (9-1)*5 +3+5;
+     }
        blkfull = FILLBLKSTART + (9-1)*5 +2+5;
      setalready = 1;
      blk_bonus = 40;  /*40 points for creating a loop */

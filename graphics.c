@@ -440,8 +440,9 @@ void free_pixmaps()
 {
   int i;
 
-  for(i=0;i++;i<NUM_TMP_CURSOR_PIXMAPS) 
+  for(i=0;i<NUM_TMP_CURSOR_PIXMAPS;i++) {
     XFreePixmap(display,tmp_pixmap[i]);
+  }
 
 }
 

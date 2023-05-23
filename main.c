@@ -110,21 +110,21 @@ static Arg arglistinfo_command[] = {
 /*----------------------------------------------------------------------*/
 
 static char translations_str[] = 
-  "<Btn1Down>:	do_nothing()		\n\
-   <Btn2Down>:	do_nothing()		\n\
-   <Btn3Down>:	do_nothing()		\n\
-   <Btn1Up>:    move_here()		\n\
-   <Btn2Up>:    place()    		\n\
-   <Btn3Up>:    do_nothing()   		\n\
-   :<Key>x:     move(right)		\n\
-   :<Key>z:     move(left)		\n\
-   :<Key>':     move(up)		\n\
-   :<Key>/:     move(down)		\n\
-   <Key>\\ :    place()        		\n\
-   :<Key>p:     place()  		\n\
-   <Key>Tab:    fastflow() 		\n\
-   <Key>n:      new_game()		\n\
-   Ctrl<Key>c:  quit() ";
+  "<Btn1Down>: do_nothing()\n\
+   <Btn2Down>: do_nothing()\n\
+   <Btn3Down>: do_nothing()\n\
+   <Btn1Up>:   move_here()\n\
+   <Btn2Up>:   place()\n\
+   <Btn3Up>:   do_nothing()\n\
+   :<Key>x:    move(right)\n\
+   :<Key>z:    move(left)\n\
+   :<Key>':    move(up)\n\
+   :<Key>/:    move(down)\n\
+   <Key>\\ :   place()\n\
+   :<Key>p:    place()\n\
+   <Key>Tab:   fastflow()\n\
+   <Key>n:     new_game()\n\
+   Ctrl<Key>c: quit()";
 
 static void quit_game();
 
@@ -148,13 +148,13 @@ static XrmOptionDescRec options[] = {
 
 static XtResource application_resources[] = {
   {"foreground", "Foreground", XtRPixel, sizeof(Pixel),
-                XtOffsetOf(AppData, fg), XtRString, (caddr_t) "Black"},
+                XtOffsetOf(AppData, fg), XtRString, (XtPointer) "Black"},
   {"background", "Background", XtRPixel, sizeof(Pixel),
-                XtOffsetOf(AppData, bg), XtRString, (caddr_t) "White"},
+                XtOffsetOf(AppData, bg), XtRString, (XtPointer) "White"},
   {"translations","Translations", XtRTranslationTable, sizeof(XtTranslations),
-                XtOffsetOf(AppData,translations_str), XtRString, (caddr_t)translations_str},
+                XtOffsetOf(AppData,translations_str), XtRString, (XtPointer)translations_str},
   {"scorefile","Scorefile", XtRString, sizeof(String),
-                XtOffsetOf(AppData,score_file), XtRString, (caddr_t)SCORE_FILE},
+                XtOffsetOf(AppData,score_file), XtRString, (XtPointer)SCORE_FILE},
 };
 
 /*----------------------------------------------------------------------*/
@@ -176,6 +176,8 @@ main(int argc, char **argv)
 
   XtAddActions(actions,XtNumber(actions));
 
+  //translations = XtParseTranslationTable(translations_str);
+
     XtGetApplicationResources(top_shell, 
             &app_data, 
             application_resources, 
@@ -196,8 +198,8 @@ main(int argc, char **argv)
                                     arglistplayfield,
                                     XtNumber(arglistplayfield));
 
-  XtAugmentTranslations(playfield_widget,translations);
-
+  XtAugmentTranslations(playfield_widget,XtParseTranslationTable(translations_str));
+ 
   quit_command = XtCreateManagedWidget(
                                     "quit_button",
                                     commandWidgetClass,
