@@ -57,9 +57,9 @@
 /*----------------------------------------------------------------------*/
 
 typedef struct {
-  char 	score[32], 
-	      name[32],
-        level[32];
+  char 	score[6],
+	      name[26],
+        level[5];
 } SCORE;
 
 static SCORE scores[MAXSCORES];
@@ -69,13 +69,15 @@ static void new_high_score(int current_score, int level);
 static void write_out_scores(void);
 
 static FILE *scorefile = 0;
-char *score_filename;
+char *score_filename = SCORE_FILE;
 
 /*----------------------------------------------------------------------*/
 
 void
 check_score(int current_score, int level)
 {
+
+fprintf(stderr, "check_score %s\n", score_filename);
 
   load_scores();
 
@@ -97,6 +99,8 @@ static void
 load_scores()
 {
   int i = 0;
+
+fprintf(stderr, "load_scores %s\n", score_filename);
 
   if( !(scorefile = fopen(score_filename,"r+")) ) {
     scorefile = fopen(score_filename, "w");
@@ -123,6 +127,8 @@ new_high_score(int current_score, int level)
   char textscore[32],
        name[32],
        levelno[16];
+
+fprintf(stderr, "new_high_score %s\n", score_filename);
 
   snprintf(textscore,sizeof(textscore),"%5d",current_score);
   snprintf(levelno,sizeof(levelno),"%4d",level);
@@ -153,6 +159,7 @@ write_out_scores()
 {
   int i;
 
+fprintf(stderr, "write_out_scores %s\n", score_filename);
   if( !scorefile )
     return;
   rewind(scorefile);
@@ -254,6 +261,8 @@ show_scores()
   char tmp_str[2048];
   Arg tmp_arg;
 
+fprintf(stderr, "show_scores %s\n", score_filename);
+
   for(i = 0;i<MAXSCORES;i++) {
     snprintf(tmp_str,sizeof(tmp_str),"%5s  %25s  %4s", 
 	    scores[i].score, scores[i].name,scores[i].level);
@@ -271,6 +280,8 @@ show_scores()
 void
 show_scores_callback()
 {
+  fprintf(stderr, "show_scores_callback %s\n", score_filename);
+
   load_scores();
 
   if(scorefile) {

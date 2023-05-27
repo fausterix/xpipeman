@@ -140,8 +140,6 @@ static XtActionsRec actions[] = {
 
 AppData app_data;
 
-XtTranslations translations;
-
 static XrmOptionDescRec options[] = {
 	{"-scorefile","scorefile",XrmoptionSepArg, NULL },
 };
@@ -152,7 +150,7 @@ static XtResource application_resources[] = {
   {"background", "Background", XtRPixel, sizeof(Pixel),
                 XtOffsetOf(AppData, bg), XtRString, (XtPointer) "White"},
   {"translations","Translations", XtRTranslationTable, sizeof(XtTranslations),
-                XtOffsetOf(AppData,translations_str), XtRString, (XtPointer)translations_str},
+                XtOffsetOf(AppData,translations), XtRString, (XtPointer)translations_str},
   {"scorefile","Scorefile", XtRString, sizeof(String),
                 XtOffsetOf(AppData,score_file), XtRString, (XtPointer)SCORE_FILE},
 };
@@ -176,7 +174,7 @@ main(int argc, char **argv)
 
   XtAddActions(actions,XtNumber(actions));
 
-  //translations = XtParseTranslationTable(translations_str);
+  app_data.translations = XtParseTranslationTable(translations_str);
 
     XtGetApplicationResources(top_shell, 
             &app_data, 
@@ -198,7 +196,7 @@ main(int argc, char **argv)
                                     arglistplayfield,
                                     XtNumber(arglistplayfield));
 
-  XtAugmentTranslations(playfield_widget,XtParseTranslationTable(translations_str));
+  XtAugmentTranslations(playfield_widget, app_data.translations);
  
   quit_command = XtCreateManagedWidget(
                                     "quit_button",

@@ -49,7 +49,7 @@ extern GC 	gc,
 typedef struct {
     Pixel fg;
     Pixel bg;
-    XtTranslations translations_str;
+    XtTranslations translations;
     String score_file;
 } AppData;
 
@@ -119,8 +119,13 @@ extern void     pointer_moved(Widget w, XtPointer closure, XEvent *event, Boolea
  * from score.c
  */
 
+//#define XSTR(x) STR(x)
+//#define STR(x) #x
+//#pragma message "The value of SCORE_FILE: " XSTR(SCORE_FILE)
+
 #ifndef SCORE_FILE
-#  define SCORE_FILE "/tmp/xpipescores"
+#  define SCORE_FILE "/usr/games/lib/xpipescores"
+#  error "undefined SCORE_FILE"
 #endif
 
 #ifndef MAXSCORES
