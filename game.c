@@ -372,7 +372,7 @@ start_new_level()
 void
 new_level()
 {
-  int x,y,tmp;
+  int x,y/*,tmp*/;
 
   if (level >= MAXLEVELS){
     game_active =0 ;
@@ -542,7 +542,7 @@ draw_flow( void * data, XtIntervalId *id)
 void
 increment_flow()
 {
-  int new_dir,i,failed=0;
+  int new_dir,/*i,*/failed=0;
   void *data = NULL;  /*dummy variables*/
   XtIntervalId *id = NULL;
       switch (flow_dir) {

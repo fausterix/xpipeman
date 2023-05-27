@@ -147,10 +147,10 @@ continue_callback( Widget w, void * closure, void * call_data)
 void
 create_general_popups(Widget parent)
 {
-  int i;
-  Widget info_msg, game_over_box,level_over_box,continue_button,nomore_box;
-  Arg wargs[1];
-  char *message;
+  //int i;
+  Widget /*info_msg,*/ game_over_box,level_over_box,continue_button,nomore_box;
+  //Arg wargs[1];
+  //char *message;
   
   game_over_popup = XtCreatePopupShell(
                                    "game_over",

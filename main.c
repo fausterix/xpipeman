@@ -160,7 +160,7 @@ static XtResource application_resources[] = {
 int
 main(int argc, char **argv)
 {
-  Arg args[1];
+  //Arg args[1];
   XGCValues gcv;
   Widget quit_command,
 	 new_game_command;

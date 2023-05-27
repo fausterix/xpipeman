@@ -147,7 +147,7 @@ place_action( Widget w, XButtonEvent *event, String *params, Cardinal *num_param
 /* 
  Places a block 
  */
-  int diff_x, diff_y;
+  //int diff_x, diff_y;
 
   if((!game_active) || buttons_disabled) return;
   if (!place_block()) XBell(XtDisplay(w),100);

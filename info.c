@@ -149,10 +149,10 @@ static Arg arglist_info_popdown[] = {
 void
 create_info_popup(Widget parent)
 {
-  int i;
-  Widget info_msg, info_popdown,info_box;
-  Arg wargs[1];
-  char *message;
+  //int i;
+  Widget /*info_msg,*/ info_popdown,info_box;
+  //Arg wargs[1];
+  //char *message;
   
   info_popup = XtCreatePopupShell(
                                    "info_popup",

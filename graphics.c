@@ -56,7 +56,7 @@ init_pixmaps( Widget top_shell)
  * Let's make some pixmaps and some cursors.
  * And then let's set the iconpixmap.
  */
-  Pixmap tmpP;
+  //Pixmap tmpP;
   XColor fgcolor,bgcolor;
   Arg arg;
 
@@ -71,249 +71,249 @@ init_pixmaps( Widget top_shell)
 
 
   iconP =  XCreateBitmapFromData(display,playfield,
-		       icon_bits,icon_width,icon_height);
+		       (char *)icon_bits,icon_width,icon_height);
 
   tmp_pixmap[EMPTY] = XCreateBitmapFromData(display,playfield,
-		       empty_bits, empty_width, empty_height);
+		       (char *)empty_bits, empty_width, empty_height);
 
-  tmp_pixmap[1] = XCreateBitmapFromData(display,playfield, b1_bits,
+  tmp_pixmap[1] = XCreateBitmapFromData(display,playfield, (char *)(char *)b1_bits,
 					b1_width, b1_height);
 
-  tmp_pixmap[2] = XCreateBitmapFromData(display,playfield, b2_bits,
+  tmp_pixmap[2] = XCreateBitmapFromData(display,playfield, (char *)(char *)b2_bits,
 					b2_width, b2_height);
 
-  tmp_pixmap[3] = XCreateBitmapFromData(display,playfield, b3_bits,
+  tmp_pixmap[3] = XCreateBitmapFromData(display,playfield, (char *)(char *)b3_bits,
 					b3_width, b3_height);
 
-  tmp_pixmap[4] = XCreateBitmapFromData(display,playfield, b4_bits,
+  tmp_pixmap[4] = XCreateBitmapFromData(display,playfield, (char *)(char *)b4_bits,
 					b4_width, b4_height);
 
-  tmp_pixmap[5] = XCreateBitmapFromData(display,playfield, b5_bits,
+  tmp_pixmap[5] = XCreateBitmapFromData(display,playfield, (char *)(char *)b5_bits,
 					b5_width, b5_height);
 
-  tmp_pixmap[6] = XCreateBitmapFromData(display,playfield, b6_bits,
+  tmp_pixmap[6] = XCreateBitmapFromData(display,playfield, (char *)(char *)b6_bits,
 					b6_width, b6_height);
 
-  tmp_pixmap[7] = XCreateBitmapFromData(display,playfield, b7_bits,
+  tmp_pixmap[7] = XCreateBitmapFromData(display,playfield, (char *)(char *)b7_bits,
 					b7_width, b7_height);
 
-  tmp_pixmap[ONEWAY] = XCreateBitmapFromData(display,playfield, b11w_bits,
+  tmp_pixmap[ONEWAY] = XCreateBitmapFromData(display,playfield, (char *)b11w_bits,
 					b11w_width, b11w_height);
 
-  tmp_pixmap[ONEWAY+1] = XCreateBitmapFromData(display,playfield, b21w_bits,
+  tmp_pixmap[ONEWAY+1] = XCreateBitmapFromData(display,playfield, (char *)b21w_bits,
 					b21w_width, b21w_height);
 
-  tmp_pixmap[ONEWAY+2] = XCreateBitmapFromData(display,playfield, b31w_bits,
+  tmp_pixmap[ONEWAY+2] = XCreateBitmapFromData(display,playfield, (char *)b31w_bits,
 					b31w_width, b31w_height);
 
-  tmp_pixmap[ONEWAY+3] = XCreateBitmapFromData(display,playfield, b41w_bits,
+  tmp_pixmap[ONEWAY+3] = XCreateBitmapFromData(display,playfield, (char *)b41w_bits,
 					b41w_width, b41w_height);
 
-  tmp_pixmap[ONEWAY+4] = XCreateBitmapFromData(display,playfield, b51w_bits,
+  tmp_pixmap[ONEWAY+4] = XCreateBitmapFromData(display,playfield, (char *)b51w_bits,
 					b51w_width, b51w_height);
 
-  tmp_pixmap[ONEWAY+5] = XCreateBitmapFromData(display,playfield, b61w_bits,
+  tmp_pixmap[ONEWAY+5] = XCreateBitmapFromData(display,playfield, (char *)b61w_bits,
 					b61w_width, b61w_height);
 
-  tmp_pixmap[HFULL] = XCreateBitmapFromData(display,playfield, b8_bits,
+  tmp_pixmap[HFULL] = XCreateBitmapFromData(display,playfield, (char *)b8_bits,
 					b8_width, b8_height);
 
-  tmp_pixmap[VFULL] = XCreateBitmapFromData(display,playfield, b9_bits,
+  tmp_pixmap[VFULL] = XCreateBitmapFromData(display,playfield, (char *)b9_bits,
 					b9_width, b9_height);
 
-  tmp_pixmap[FILLBLKSTART] = XCreateBitmapFromData(display,playfield, b11_bits,
+  tmp_pixmap[FILLBLKSTART] = XCreateBitmapFromData(display,playfield, (char *)b11_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+1] = XCreateBitmapFromData(display,playfield, b12_bits,
+  tmp_pixmap[FILLBLKSTART+1] = XCreateBitmapFromData(display,playfield, (char *)b12_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+2] = XCreateBitmapFromData(display,playfield, b13_bits,
+  tmp_pixmap[FILLBLKSTART+2] = XCreateBitmapFromData(display,playfield, (char *)b13_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+3] = XCreateBitmapFromData(display,playfield, b14_bits,
+  tmp_pixmap[FILLBLKSTART+3] = XCreateBitmapFromData(display,playfield, (char *)b14_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+4] = XCreateBitmapFromData(display,playfield, b15_bits,
+  tmp_pixmap[FILLBLKSTART+4] = XCreateBitmapFromData(display,playfield, (char *)b15_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+5] = XCreateBitmapFromData(display,playfield, b21_bits,
+  tmp_pixmap[FILLBLKSTART+5] = XCreateBitmapFromData(display,playfield, (char *)b21_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+6] = XCreateBitmapFromData(display,playfield, b22_bits,
+  tmp_pixmap[FILLBLKSTART+6] = XCreateBitmapFromData(display,playfield, (char *)b22_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+7] = XCreateBitmapFromData(display,playfield, b23_bits,
+  tmp_pixmap[FILLBLKSTART+7] = XCreateBitmapFromData(display,playfield, (char *)b23_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+8] = XCreateBitmapFromData(display,playfield, b24_bits,
+  tmp_pixmap[FILLBLKSTART+8] = XCreateBitmapFromData(display,playfield, (char *)b24_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+9] = XCreateBitmapFromData(display,playfield, b25_bits,
+  tmp_pixmap[FILLBLKSTART+9] = XCreateBitmapFromData(display,playfield, (char *)b25_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+10] = XCreateBitmapFromData(display,playfield, b31_bits,
+  tmp_pixmap[FILLBLKSTART+10] = XCreateBitmapFromData(display,playfield, (char *)b31_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+11] = XCreateBitmapFromData(display,playfield, b32_bits,
+  tmp_pixmap[FILLBLKSTART+11] = XCreateBitmapFromData(display,playfield, (char *)b32_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+12] = XCreateBitmapFromData(display,playfield, b33_bits,
+  tmp_pixmap[FILLBLKSTART+12] = XCreateBitmapFromData(display,playfield, (char *)b33_bits,
 				block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+13] = XCreateBitmapFromData(display,playfield, b34_bits,
+  tmp_pixmap[FILLBLKSTART+13] = XCreateBitmapFromData(display,playfield, (char *)b34_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+14] = XCreateBitmapFromData(display,playfield, b35_bits,
+  tmp_pixmap[FILLBLKSTART+14] = XCreateBitmapFromData(display,playfield, (char *)b35_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+15] = XCreateBitmapFromData(display,playfield, b41_bits,
+  tmp_pixmap[FILLBLKSTART+15] = XCreateBitmapFromData(display,playfield, (char *)b41_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+16] = XCreateBitmapFromData(display,playfield, b42_bits,
+  tmp_pixmap[FILLBLKSTART+16] = XCreateBitmapFromData(display,playfield, (char *)b42_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+17] = XCreateBitmapFromData(display,playfield, b43_bits,
+  tmp_pixmap[FILLBLKSTART+17] = XCreateBitmapFromData(display,playfield, (char *)b43_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+18] = XCreateBitmapFromData(display,playfield, b44_bits,
+  tmp_pixmap[FILLBLKSTART+18] = XCreateBitmapFromData(display,playfield, (char *)b44_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+19] = XCreateBitmapFromData(display,playfield, b45_bits,
+  tmp_pixmap[FILLBLKSTART+19] = XCreateBitmapFromData(display,playfield, (char *)b45_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+20] = XCreateBitmapFromData(display,playfield, b51_bits,
+  tmp_pixmap[FILLBLKSTART+20] = XCreateBitmapFromData(display,playfield, (char *)b51_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+21] = XCreateBitmapFromData(display,playfield, b52_bits,
+  tmp_pixmap[FILLBLKSTART+21] = XCreateBitmapFromData(display,playfield, (char *)b52_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+22] = XCreateBitmapFromData(display,playfield, b53_bits,
+  tmp_pixmap[FILLBLKSTART+22] = XCreateBitmapFromData(display,playfield, (char *)b53_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+23] = XCreateBitmapFromData(display,playfield, b54_bits,
+  tmp_pixmap[FILLBLKSTART+23] = XCreateBitmapFromData(display,playfield, (char *)b54_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+24] = XCreateBitmapFromData(display,playfield, b55_bits,
+  tmp_pixmap[FILLBLKSTART+24] = XCreateBitmapFromData(display,playfield, (char *)b55_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+25] = XCreateBitmapFromData(display,playfield, b61_bits,
+  tmp_pixmap[FILLBLKSTART+25] = XCreateBitmapFromData(display,playfield, (char *)b61_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+26] = XCreateBitmapFromData(display,playfield, b62_bits,
+  tmp_pixmap[FILLBLKSTART+26] = XCreateBitmapFromData(display,playfield, (char *)b62_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+27] = XCreateBitmapFromData(display,playfield, b63_bits,
+  tmp_pixmap[FILLBLKSTART+27] = XCreateBitmapFromData(display,playfield, (char *)b63_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+28] = XCreateBitmapFromData(display,playfield, b64_bits,
+  tmp_pixmap[FILLBLKSTART+28] = XCreateBitmapFromData(display,playfield, (char *)b64_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+29] = XCreateBitmapFromData(display,playfield, b65_bits,
+  tmp_pixmap[FILLBLKSTART+29] = XCreateBitmapFromData(display,playfield, (char *)b65_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+30] = XCreateBitmapFromData(display,playfield, b71_bits,
+  tmp_pixmap[FILLBLKSTART+30] = XCreateBitmapFromData(display,playfield, (char *)b71_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+31] = XCreateBitmapFromData(display,playfield, b72_bits,
+  tmp_pixmap[FILLBLKSTART+31] = XCreateBitmapFromData(display,playfield, (char *)b72_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+32] = XCreateBitmapFromData(display,playfield, b73_bits,
+  tmp_pixmap[FILLBLKSTART+32] = XCreateBitmapFromData(display,playfield, (char *)b73_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+33] = XCreateBitmapFromData(display,playfield, b74_bits,
+  tmp_pixmap[FILLBLKSTART+33] = XCreateBitmapFromData(display,playfield, (char *)b74_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+34] = XCreateBitmapFromData(display,playfield, b75_bits,
+  tmp_pixmap[FILLBLKSTART+34] = XCreateBitmapFromData(display,playfield, (char *)b75_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+35] = XCreateBitmapFromData(display,playfield, b76_bits,
+  tmp_pixmap[FILLBLKSTART+35] = XCreateBitmapFromData(display,playfield, (char *)b76_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+36] = XCreateBitmapFromData(display,playfield, b77_bits,
+  tmp_pixmap[FILLBLKSTART+36] = XCreateBitmapFromData(display,playfield, (char *)b77_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+37] = XCreateBitmapFromData(display,playfield, b78_bits,
+  tmp_pixmap[FILLBLKSTART+37] = XCreateBitmapFromData(display,playfield, (char *)b78_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+38] = XCreateBitmapFromData(display,playfield, b79_bits,
+  tmp_pixmap[FILLBLKSTART+38] = XCreateBitmapFromData(display,playfield, (char *)b79_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+39] = XCreateBitmapFromData(display,playfield, b7a_bits,
+  tmp_pixmap[FILLBLKSTART+39] = XCreateBitmapFromData(display,playfield, (char *)b7a_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+40] = XCreateBitmapFromData(display,playfield, b81_bits,
+  tmp_pixmap[FILLBLKSTART+40] = XCreateBitmapFromData(display,playfield, (char *)b81_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+41] = XCreateBitmapFromData(display,playfield, b82_bits,
+  tmp_pixmap[FILLBLKSTART+41] = XCreateBitmapFromData(display,playfield, (char *)b82_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+42] = XCreateBitmapFromData(display,playfield, b83_bits,
+  tmp_pixmap[FILLBLKSTART+42] = XCreateBitmapFromData(display,playfield, (char *)b83_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+43] = XCreateBitmapFromData(display,playfield, b84_bits,
+  tmp_pixmap[FILLBLKSTART+43] = XCreateBitmapFromData(display,playfield, (char *)b84_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+44] = XCreateBitmapFromData(display,playfield, b85_bits,
+  tmp_pixmap[FILLBLKSTART+44] = XCreateBitmapFromData(display,playfield, (char *)b85_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+45] = XCreateBitmapFromData(display,playfield, b91_bits,
+  tmp_pixmap[FILLBLKSTART+45] = XCreateBitmapFromData(display,playfield, (char *)b91_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+46] = XCreateBitmapFromData(display,playfield, b92_bits,
+  tmp_pixmap[FILLBLKSTART+46] = XCreateBitmapFromData(display,playfield, (char *)b92_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+47] = XCreateBitmapFromData(display,playfield, b93_bits,
+  tmp_pixmap[FILLBLKSTART+47] = XCreateBitmapFromData(display,playfield, (char *)b93_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+48] = XCreateBitmapFromData(display,playfield, b94_bits,
+  tmp_pixmap[FILLBLKSTART+48] = XCreateBitmapFromData(display,playfield, (char *)b94_bits,
 					block_width, block_height);
 
-  tmp_pixmap[FILLBLKSTART+49] = XCreateBitmapFromData(display,playfield, b95_bits,
+  tmp_pixmap[FILLBLKSTART+49] = XCreateBitmapFromData(display,playfield, (char *)b95_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSRT] = XCreateBitmapFromData(display,playfield, ob1_bits,
+  tmp_pixmap[OBSRT] = XCreateBitmapFromData(display,playfield, (char *)ob1_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSRT+1] = XCreateBitmapFromData(display,playfield, ob2_bits,
+  tmp_pixmap[OBSRT+1] = XCreateBitmapFromData(display,playfield, (char *)ob2_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSRT+2] = XCreateBitmapFromData(display,playfield, ob3_bits,
+  tmp_pixmap[OBSRT+2] = XCreateBitmapFromData(display,playfield, (char *)ob3_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSRT+3] = XCreateBitmapFromData(display,playfield, ob4_bits,
+  tmp_pixmap[OBSRT+3] = XCreateBitmapFromData(display,playfield, (char *)ob4_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSRT+4] = XCreateBitmapFromData(display,playfield, ob5_bits,
+  tmp_pixmap[OBSRT+4] = XCreateBitmapFromData(display,playfield, (char *)ob5_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSRT+5] = XCreateBitmapFromData(display,playfield, ob6_bits,
+  tmp_pixmap[OBSRT+5] = XCreateBitmapFromData(display,playfield, (char *)ob6_bits,
 					block_width, block_height);
 
-  tmp_pixmap[OBSFIN] = XCreateBitmapFromData(display,playfield, ob7_bits,
+  tmp_pixmap[OBSFIN] = XCreateBitmapFromData(display,playfield, (char *)ob7_bits,
 					block_width, block_height);
 
-  tmp_pixmap[SHOWFLOW] = XCreateBitmapFromData(display,playfield, fbar_bits,
+  tmp_pixmap[SHOWFLOW] = XCreateBitmapFromData(display,playfield, (char *)fbar_bits,
 					fbar_width, fbar_height);
 
-  tmp_pixmap[SHOWFLOW+1] = XCreateBitmapFromData(display,playfield, fbar1_bits,
+  tmp_pixmap[SHOWFLOW+1] = XCreateBitmapFromData(display,playfield, (char *)fbar1_bits,
 					fbar_width, fbar_height);
 
-  tmp_pixmap[SHOWFLOW+2] = XCreateBitmapFromData(display,playfield, fbar2_bits,
+  tmp_pixmap[SHOWFLOW+2] = XCreateBitmapFromData(display,playfield, (char *)fbar2_bits,
 					fbar_width, fbar_height);
 
-  tmp_pixmap[SHOWFLOW+3] = XCreateBitmapFromData(display,playfield, flowst_bits,
+  tmp_pixmap[SHOWFLOW+3] = XCreateBitmapFromData(display,playfield, (char *)flowst_bits,
 					flowst_width, flowst_height);
 
-  tmp_pixmap[START] = XCreateBitmapFromData(display,playfield, start_bits,
+  tmp_pixmap[START] = XCreateBitmapFromData(display,playfield, (char *)start_bits,
 					start_width, start_height);
 
-  tmp_pixmap[STARTFULL] = XCreateBitmapFromData(display,playfield, startfull_bits,
+  tmp_pixmap[STARTFULL] = XCreateBitmapFromData(display,playfield, (char *)startfull_bits,
 					startfull_width, startfull_height);
 
-  tmp_pixmap[ARROW] = XCreateBitmapFromData(display,playfield, arrow_bits,
+  tmp_pixmap[ARROW] = XCreateBitmapFromData(display,playfield, (char *)arrow_bits,
 					arrow_width, arrow_height);
 
-  tmp_pixmap[BAR] = XCreateBitmapFromData(display,playfield, bar_bits,
+  tmp_pixmap[BAR] = XCreateBitmapFromData(display,playfield, (char *)bar_bits,
 					bar_width, bar_height);
 
   XtSetArg(arg,XtNiconPixmap,iconP);
@@ -410,7 +410,7 @@ show_movement()
 /* 
  * redraws previous position and overlays current block on new position.
  */
-  int x,y;
+  //int x,y;
 
   if (INXRANGE(last_block_x) && INYRANGE(last_block_y))
     redraw_block(last_block_x,last_block_y);
