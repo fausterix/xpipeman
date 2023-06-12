@@ -79,7 +79,7 @@ the flow to speed up.
 xpipeman.scorefile
 .RS
 Set this to the path of your personal score file.  The file will be
-created if it does not exist.  The default: ./xpipescores
+created if it does not exist.  The default: $HOME/.xpipescores
 .RE
 .LP
 .SH OPTIONS
@@ -102,7 +102,7 @@ levels). The name for the high score list comes from the USER environment variab
 .LP
 .SH FILES
 .LP
-  ./xpipescores \-\- the score file
+  $HOME/.xpipescores \-\- the score file
 .LP
 .LP
 .SH BUGS

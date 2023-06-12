@@ -5,10 +5,10 @@ sudo apt install libxaw7
 sudo apt install libxaw7-dev
 
 Simple:
-gcc -Wall -pedantic -DSCORE_FILE=\"./xpipescores\" -o xpipeman main.c game.c actions.c graphics.c score.c info.c popup.c -lXaw -lXmu -lXt -lSM -lICE -lXext -lX11 -lm
+gcc -Wall -pedantic -DSCORE_FILE=\"$HOME/.xpipescores\" -o xpipeman main.c game.c actions.c graphics.c score.c info.c popup.c -lXaw -lXmu -lXt -lSM -lICE -lXext -lX11 -lm
 
 Or using the Makefile.tra:
 make -f Makefile.tra clean && make -f Makefile.tra
 
 Or with xmkmf/imake:
-xmkmf -a && make clean && make CFLAGS="-DSCORE_FILE='\"./xpipescores\"'"
+xmkmf -a && make clean && make CFLAGS="-DSCORE_FILE='\"$HOME/.xpipescores\"'"

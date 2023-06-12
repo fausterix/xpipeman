@@ -124,7 +124,6 @@ extern void     pointer_moved(Widget w, XtPointer closure, XEvent *event, Boolea
 //#pragma message "The value of SCORE_FILE: " XSTR(SCORE_FILE)
 
 #ifndef SCORE_FILE
-#  define SCORE_FILE "/usr/games/lib/xpipescores"
 #  error "undefined SCORE_FILE"
 #endif
 

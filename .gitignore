@@ -1,3 +1,5 @@
+Makefile
 xpipeman
+xpipeman._man
 *.o
 *.a
