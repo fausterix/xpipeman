@@ -676,8 +676,8 @@ block_replace(int flw_dir)
      else
      {
        blkrstart = FILLBLKSTART + (8-1)*5 +3+5;
-       blkfull = FILLBLKSTART + (8-1)*5 +2+5;
      }
+       blkfull = FILLBLKSTART + (8-1)*5 +2+5;
      setalready = 1;
      blk_bonus = 40;  /*40 points for creating a loop */
      break;
